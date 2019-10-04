@@ -1,11 +1,36 @@
 ---
 HOSTS:
-  debian-8-x64:
-    roles:
-      - agent
-      - default
+  debian8-64-1:
+    pe_dir:
+    pe_ver:
+    pe_upgrade_dir:
+    pe_upgrade_ver:
+    docker_cmd:
+    - "/sbin/init"
+    image: debian:8
     platform: debian-8-amd64
-    hypervisor: vagrant
-    box: puppetlabs/debian-8.2-64-nocm
+    packaging_platform: debian-8-amd64
+    docker_image_commands:
+    - cp /bin/true /sbin/agetty
+    - rm -f /usr/sbin/policy-rc.d
+    - apt-get update && apt-get install -y cron locales-all net-tools wget
+    hypervisor: docker
+    roles:
+    - agent
+    - default
 CONFIG:
   type: foss
+  nfs_server: none
+  consoleport: 443
+# ---
+# HOSTS:
+#   debian-8-x64:
+#     roles:
+#       - agent
+#       - default
+#     platform: debian-8-amd64
+#     hypervisor: vagrant
+#     box: puppetlabs/debian-8.2-64-nocm
+# CONFIG:
+#   type: foss
+

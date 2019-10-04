@@ -1,4 +1,5 @@
 require 'beaker-rspec'
+require 'docker'
 
 logger.error('LOADED MYYYYYYYYYY Spec Acceptance Helper')
 
