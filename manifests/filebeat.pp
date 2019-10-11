@@ -18,9 +18,9 @@ class elk::filebeat (
     enable  => true,
     require => Package['filebeat'],
   }
-  file{'/etc/filebeat/filebeat.yaml':
+  file{'/etc/filebeat/filebeat.yml':
     ensure => file,
-    content => epp('elk/filebeat.yaml.epp',{
+    content => epp('elk/filebeat.yml.epp',{
       logstash_server => $logstash_server,
       logstash_port   => $logstash_port,
     })
